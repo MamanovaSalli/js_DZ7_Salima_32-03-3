@@ -172,7 +172,8 @@
     top: 0;
     left: 0;
     z-index: 2;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
     display: none;
 }
 
@@ -226,7 +227,7 @@
 
 /*-------BOTTLE-------*/
 
-.botlle {
+.bottle {
     background: black;
     padding: 100px 0;
 }

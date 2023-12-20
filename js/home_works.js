@@ -112,3 +112,18 @@ watchBlockReset.addEventListener('click', () => {
     watchHundSecond.innerHTML = '00'
 
 });
+
+
+//tab slider
+
+const tabContentBlocks = document.querySelectorAll('.tab_content_block')
+
+console.log(tabContentBlocks)
+// const hideTabCont = () => {
+//     tabContentBlocks.forEach(tabCard => {
+//         tabCard.style.display = 'none'
+//         // console.log(tabCard)
+//     })
+// }
+//
+// hideTabCont();

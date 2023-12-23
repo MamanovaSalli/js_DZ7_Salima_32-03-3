@@ -68,9 +68,53 @@ tabsParent.onclick = () => {
 autoSlide()
 
 
+//CONVERTOR
 
+const som = document.querySelector('#som')
+const usd = document.querySelector('#usd')
+const eur = document.querySelector('#eur')
+const rub = document.querySelector('#rub')
 
+const converter = (element, targetElement, targetElement2, targetElement3, current) => {
+    element.oninput = () => {
+        const xhr = new XMLHttpRequest()
+        xhr.open('GET', '../data/converter.json')
+        xhr.setRequestHeader('Content-type', 'application/json')
+        xhr.send()
 
+        xhr.onload = () => {
+            const data = JSON.parse(xhr.response)
 
-
+            switch (current) {
+                case 'som':
+                    targetElement.value = (element.value / data.usd).toFixed(2)
+                    targetElement2.value = (element.value / data.eur).toFixed(2)
+                    targetElement3.value = (element.value / data.rub).toFixed(2)
+                    break
+                case 'usd':
+                    targetElement.value = (element.value * data.usd).toFixed(2)
+                    targetElement2.value = (element.value * data.usd / data.eur).toFixed(2)
+                    targetElement3.value = (element.value * data.usd / data.rub).toFixed(2)
+                    break
+                case 'eur':
+                    targetElement.value = (element.value * data.eur).toFixed(2)
+                    targetElement2.value = (element.value * data.eur / data.usd).toFixed(2)
+                    targetElement3.value = (element.value * data.eur / data.rub).toFixed(2)
+                    break
+                case 'rub':
+                    targetElement.value = (element.value * data.rub).toFixed(2);
+                    targetElement2.value = (element.value * data.rub / data.usd).toFixed(2);
+                    targetElement3.value = (element.value * data.rub / data.eur).toFixed(2);
+                    break
+                default:
+                    break
+            }
+            element.value === '' && (targetElement.value = targetElement2.value = targetElement3.value = '')
+        }
+    }
+}
+converter(som, usd, eur, rub, 'som')
+converter(usd, som, eur, rub, 'usd')
+converter(eur, som, usd, rub, 'eur')
+converter(rub, som, usd, eur, 'rub')
 

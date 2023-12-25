@@ -118,3 +118,63 @@ converter(usd, som, eur, rub, 'usd')
 converter(eur, som, usd, rub, 'eur')
 converter(rub, som, usd, eur, 'rub')
 
+
+//CARD SWITCHER
+
+const card = document.querySelector('.card'),
+    btnNext = document.querySelector('#btn-next'),
+    btnPrev = document.querySelector('#btn-prev')
+
+let countCard = 1
+let countCard2 = 1
+
+const cardsIn = (index = 1) => {
+    fetch(`https://jsonplaceholder.typicode.com/todos/${countCard}`)
+        .then(response => response.json())
+        .then(data => {
+            card.innerHTML = `
+                <p>${data.title}</p>
+                <p style="color: ${data.completed ? 'green' : 'red'}">${data.completed}</p>
+                <span>${data.id}</span>
+            `
+        })
+
+}
+cardsIn()
+btnNext.addEventListener('click', () => {
+    countCard++
+    cardsIn()
+    if (countCard >= 200) {
+        countCard = 0
+    }
+})
+
+btnPrev.addEventListener('click', () => {
+    countCard--
+    cardsIn()
+    if (countCard <= 1) {
+        countCard = 201
+    }
+})
+
+const cards = () => {
+    fetch(`https://jsonplaceholder.typicode.com/posts/${countCard2}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+}
+btnNext.addEventListener('click', () => {
+    countCard2++
+    cards()
+    if (countCard2 >= 100) {
+        countCard2 = 0
+    }
+})
+btnPrev.addEventListener('click', () => {
+    countCard2--
+    cards()
+    if (countCard2 <= 1) {
+        countCard2 = 101
+    }
+})

@@ -1,4 +1,20 @@
 .cards {
-    height: 100vh;
+    padding-top: 100px;
+    min-height: 100vh;
     background-color: black;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.postCard {
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    border: 2px solid indianred;
+    color: cyan;
+}
+.postCard img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
 }

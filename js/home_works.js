@@ -17,7 +17,7 @@ gmailButt.onclick = () => {
 const childBlock = document.querySelector('.child_block')
 
 const moveSpeedChildBlock = 0.5
-const parentBlockWith = 450
+const parentBlockWith = 480
 
 let positionX = 0
 let positionY = 0

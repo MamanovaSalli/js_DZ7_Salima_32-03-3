@@ -10,11 +10,13 @@
     padding: 20px;
     text-align: center;
     width: 300px;
-    border: 2px solid indianred;
-    color: cyan;
+    border: 2px solid #222222;
+    color: #ffffff;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
 .postCard img {
-    width: 200px;
+    width: 260px;
     height: 200px;
     object-fit: cover;
 }
